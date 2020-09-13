@@ -3,10 +3,7 @@ namespace ZTime;
 
 class Helper {
 
-    public static function say(){
-        echo "hello world!";
-    }
-    
+    // xxx前   
     public function before(int! sec)-> string|bool {
         if sec > time() || sec < 0 {
             return false;

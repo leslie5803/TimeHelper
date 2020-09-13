@@ -32,3 +32,14 @@ $sec = time() - 948672000;
 echo $helper->before($sec), "\n";
 
 ```
+
+execute `php test.php` on command line, will get the results:
+
+```
+50秒前
+1分13秒前
+1小时5分50秒前
+1天前
+1月前
+1年前
+```
