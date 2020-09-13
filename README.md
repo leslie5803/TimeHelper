@@ -3,13 +3,6 @@ zephir build php extension
 
 # Usage
 
-add extension to `php.ini`
-
-```
-extension=ztime.so
-```
-
-test in php:
 
 ```
 <?php
