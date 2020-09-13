@@ -1,5 +1,5 @@
 <?php
-$helper = new TimeHelper\Helper();
+$helper = new ZTime\Helper();
 
 // xx秒前
 $sec = time() - 50 ;

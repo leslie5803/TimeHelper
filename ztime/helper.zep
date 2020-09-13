@@ -1,5 +1,5 @@
 
-namespace TimeHelper;
+namespace ZTime;
 
 class Helper {
 

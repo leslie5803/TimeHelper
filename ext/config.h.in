@@ -1,7 +1,7 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
-/* Whether to build timehelper as dynamic module */
-#undef COMPILE_DL_TIMEHELPER
+/* Whether to build ztime as dynamic module */
+#undef COMPILE_DL_ZTIME
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
@@ -36,14 +36,11 @@
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
 
-/* Whether you have Timehelper */
-#undef HAVE_TIMEHELPER
-
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define to the sub-directory where libtool stores uninstalled libraries. */
-#undef LT_OBJDIR
+/* Whether you have Ztime */
+#undef HAVE_ZTIME
 
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 #undef NO_MINUS_C_MINUS_O

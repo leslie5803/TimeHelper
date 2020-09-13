@@ -1,29 +1,29 @@
-srcdir = /root/timehelper/ext
-builddir = /root/timehelper/ext
-top_srcdir = /root/timehelper/ext
-top_builddir = /root/timehelper/ext
+srcdir = /root/ztime/ext
+builddir = /root/ztime/ext
+top_srcdir = /root/ztime/ext
+top_builddir = /root/ztime/ext
 EGREP = /bin/grep -E
 SED = /bin/sed
-CONFIGURE_COMMAND = './configure' '--enable-timehelper'
-CONFIGURE_OPTIONS = '--enable-timehelper'
+CONFIGURE_COMMAND = './configure' '--enable-ztime'
+CONFIGURE_OPTIONS = '--enable-ztime'
 SHLIB_SUFFIX_NAME = so
 SHLIB_DL_SUFFIX_NAME = so
 ZEND_EXT_TYPE = zend_extension
 RE2C = re2c
 AWK = gawk
-shared_objects_timehelper = timehelper.lo kernel/main.lo kernel/memory.lo kernel/exception.lo kernel/debug.lo kernel/backtrace.lo kernel/object.lo kernel/array.lo kernel/string.lo kernel/fcall.lo kernel/require.lo kernel/file.lo kernel/operators.lo kernel/math.lo kernel/concat.lo kernel/variables.lo kernel/filter.lo kernel/iterator.lo kernel/time.lo kernel/exit.lo timehelper/helper.lo
-PHP_PECL_EXTENSION = timehelper
-TIMEHELPER_SHARED_LIBADD =
-PHP_MODULES = $(phplibdir)/timehelper.la
+shared_objects_ztime = ztime.lo kernel/main.lo kernel/memory.lo kernel/exception.lo kernel/debug.lo kernel/backtrace.lo kernel/object.lo kernel/array.lo kernel/string.lo kernel/fcall.lo kernel/require.lo kernel/file.lo kernel/operators.lo kernel/math.lo kernel/concat.lo kernel/variables.lo kernel/filter.lo kernel/iterator.lo kernel/time.lo kernel/exit.lo ztime/helper.lo
+PHP_PECL_EXTENSION = ztime
+ZTIME_SHARED_LIBADD =
+PHP_MODULES = $(phplibdir)/ztime.la
 PHP_ZEND_EX =
 all_targets = $(PHP_MODULES) $(PHP_ZEND_EX)
 install_targets = install-modules install-headers
-prefix = /usr
+prefix = /usr/local/php
 exec_prefix = $(prefix)
 libdir = ${exec_prefix}/lib
-prefix = /usr
-phplibdir = /root/timehelper/ext/modules
-phpincludedir = /usr/include/php/20170718
+prefix = /usr/local/php
+phplibdir = /root/ztime/ext/modules
+phpincludedir = /usr/local/php/include/php
 CC = gcc
 CFLAGS = -O2 -fvisibility=hidden -Wparentheses -flto -DZEPHIR_RELEASE=1
 CFLAGS_CLEAN = $(CFLAGS)
@@ -32,17 +32,17 @@ CPPFLAGS = -DHAVE_CONFIG_H
 CXX =
 CXXFLAGS =
 CXXFLAGS_CLEAN = $(CXXFLAGS)
-EXTENSION_DIR = /usr/lib/php/20170718
-PHP_EXECUTABLE = /usr/bin/php7.2
+EXTENSION_DIR = /usr/local/php/lib/php/extensions/no-debug-non-zts-20170718
+PHP_EXECUTABLE = /usr/local/php/bin/php
 EXTRA_LDFLAGS =
 EXTRA_LIBS =
-INCLUDES = -I/usr/include/php/20170718 -I/usr/include/php/20170718/main -I/usr/include/php/20170718/TSRM -I/usr/include/php/20170718/Zend -I/usr/include/php/20170718/ext -I/usr/include/php/20170718/ext/date/lib
+INCLUDES = -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib
 LFLAGS =
 LDFLAGS =
 SHARED_LIBTOOL =
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 SHELL = /bin/bash
-INSTALL_HEADERS = ext/timehelper/php_TIMEHELPER.h
+INSTALL_HEADERS = ext/ztime/php_ZTIME.h
 mkinstalldirs = $(top_srcdir)/build/shtool mkdir -p
 INSTALL = $(top_srcdir)/build/shtool install -c
 INSTALL_DATA = $(INSTALL) -m 644
@@ -190,51 +190,51 @@ prof-use:
 
 .PHONY: all clean install distclean test prof-gen prof-clean prof-use
 .NOEXPORT:
-timehelper.lo: /root/timehelper/ext/timehelper.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/timehelper.c -o timehelper.lo 
-kernel/main.lo: /root/timehelper/ext/kernel/main.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/main.c -o kernel/main.lo 
-kernel/memory.lo: /root/timehelper/ext/kernel/memory.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/memory.c -o kernel/memory.lo 
-kernel/exception.lo: /root/timehelper/ext/kernel/exception.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/exception.c -o kernel/exception.lo 
-kernel/debug.lo: /root/timehelper/ext/kernel/debug.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/debug.c -o kernel/debug.lo 
-kernel/backtrace.lo: /root/timehelper/ext/kernel/backtrace.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/backtrace.c -o kernel/backtrace.lo 
-kernel/object.lo: /root/timehelper/ext/kernel/object.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/object.c -o kernel/object.lo 
-kernel/array.lo: /root/timehelper/ext/kernel/array.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/array.c -o kernel/array.lo 
-kernel/string.lo: /root/timehelper/ext/kernel/string.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/string.c -o kernel/string.lo 
-kernel/fcall.lo: /root/timehelper/ext/kernel/fcall.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/fcall.c -o kernel/fcall.lo 
-kernel/require.lo: /root/timehelper/ext/kernel/require.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/require.c -o kernel/require.lo 
-kernel/file.lo: /root/timehelper/ext/kernel/file.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/file.c -o kernel/file.lo 
-kernel/operators.lo: /root/timehelper/ext/kernel/operators.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/operators.c -o kernel/operators.lo 
-kernel/math.lo: /root/timehelper/ext/kernel/math.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/math.c -o kernel/math.lo 
-kernel/concat.lo: /root/timehelper/ext/kernel/concat.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/concat.c -o kernel/concat.lo 
-kernel/variables.lo: /root/timehelper/ext/kernel/variables.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/variables.c -o kernel/variables.lo 
-kernel/filter.lo: /root/timehelper/ext/kernel/filter.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/filter.c -o kernel/filter.lo 
-kernel/iterator.lo: /root/timehelper/ext/kernel/iterator.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/iterator.c -o kernel/iterator.lo 
-kernel/time.lo: /root/timehelper/ext/kernel/time.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/time.c -o kernel/time.lo 
-kernel/exit.lo: /root/timehelper/ext/kernel/exit.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/kernel/exit.c -o kernel/exit.lo 
-timehelper/helper.lo: /root/timehelper/ext/timehelper/helper.zep.c
-	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/timehelper/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/timehelper/ext/timehelper/helper.zep.c -o timehelper/helper.lo 
-$(phplibdir)/timehelper.la: ./timehelper.la
-	$(LIBTOOL) --mode=install cp ./timehelper.la $(phplibdir)
+ztime.lo: /root/ztime/ext/ztime.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/ztime.c -o ztime.lo 
+kernel/main.lo: /root/ztime/ext/kernel/main.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/main.c -o kernel/main.lo 
+kernel/memory.lo: /root/ztime/ext/kernel/memory.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/memory.c -o kernel/memory.lo 
+kernel/exception.lo: /root/ztime/ext/kernel/exception.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/exception.c -o kernel/exception.lo 
+kernel/debug.lo: /root/ztime/ext/kernel/debug.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/debug.c -o kernel/debug.lo 
+kernel/backtrace.lo: /root/ztime/ext/kernel/backtrace.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/backtrace.c -o kernel/backtrace.lo 
+kernel/object.lo: /root/ztime/ext/kernel/object.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/object.c -o kernel/object.lo 
+kernel/array.lo: /root/ztime/ext/kernel/array.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/array.c -o kernel/array.lo 
+kernel/string.lo: /root/ztime/ext/kernel/string.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/string.c -o kernel/string.lo 
+kernel/fcall.lo: /root/ztime/ext/kernel/fcall.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/fcall.c -o kernel/fcall.lo 
+kernel/require.lo: /root/ztime/ext/kernel/require.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/require.c -o kernel/require.lo 
+kernel/file.lo: /root/ztime/ext/kernel/file.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/file.c -o kernel/file.lo 
+kernel/operators.lo: /root/ztime/ext/kernel/operators.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/operators.c -o kernel/operators.lo 
+kernel/math.lo: /root/ztime/ext/kernel/math.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/math.c -o kernel/math.lo 
+kernel/concat.lo: /root/ztime/ext/kernel/concat.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/concat.c -o kernel/concat.lo 
+kernel/variables.lo: /root/ztime/ext/kernel/variables.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/variables.c -o kernel/variables.lo 
+kernel/filter.lo: /root/ztime/ext/kernel/filter.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/filter.c -o kernel/filter.lo 
+kernel/iterator.lo: /root/ztime/ext/kernel/iterator.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/iterator.c -o kernel/iterator.lo 
+kernel/time.lo: /root/ztime/ext/kernel/time.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/time.c -o kernel/time.lo 
+kernel/exit.lo: /root/ztime/ext/kernel/exit.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/kernel/exit.c -o kernel/exit.lo 
+ztime/helper.lo: /root/ztime/ext/ztime/helper.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/ztime/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/ztime/ext/ztime/helper.zep.c -o ztime/helper.lo 
+$(phplibdir)/ztime.la: ./ztime.la
+	$(LIBTOOL) --mode=install cp ./ztime.la $(phplibdir)
 
-./timehelper.la: $(shared_objects_timehelper) $(TIMEHELPER_SHARED_DEPENDENCIES)
-	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS)  -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_timehelper) $(TIMEHELPER_SHARED_LIBADD)
+./ztime.la: $(shared_objects_ztime) $(ZTIME_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS)  -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_ztime) $(ZTIME_SHARED_LIBADD)
 

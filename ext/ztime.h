@@ -4,6 +4,6 @@
 #ifndef ZEPHIR_CLASS_ENTRIES_H
 #define ZEPHIR_CLASS_ENTRIES_H
 
-#include "timehelper/helper.zep.h"
+#include "ztime/helper.zep.h"
 
 #endif

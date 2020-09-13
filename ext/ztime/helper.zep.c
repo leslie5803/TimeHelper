@@ -23,15 +23,15 @@
 #include "kernel/string.h"
 
 
-ZEPHIR_INIT_CLASS(TimeHelper_Helper) {
+ZEPHIR_INIT_CLASS(ZTime_Helper) {
 
-	ZEPHIR_REGISTER_CLASS(TimeHelper, Helper, timehelper, helper, timehelper_helper_method_entry, 0);
+	ZEPHIR_REGISTER_CLASS(ZTime, Helper, ztime, helper, ztime_helper_method_entry, 0);
 
 	return SUCCESS;
 
 }
 
-PHP_METHOD(TimeHelper_Helper, say) {
+PHP_METHOD(ZTime_Helper, say) {
 
 	zval *this_ptr = getThis();
 
@@ -40,7 +40,7 @@ PHP_METHOD(TimeHelper_Helper, say) {
 
 }
 
-PHP_METHOD(TimeHelper_Helper, before) {
+PHP_METHOD(ZTime_Helper, before) {
 
 	zend_bool _1, _4, _6, _8, _10;
 	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
@@ -132,7 +132,7 @@ PHP_METHOD(TimeHelper_Helper, before) {
 
 }
 
-PHP_METHOD(TimeHelper_Helper, getMin) {
+PHP_METHOD(ZTime_Helper, getMin) {
 
 	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *sec_param = NULL, _0, _3, _1$$4, _2$$4;
@@ -175,7 +175,7 @@ PHP_METHOD(TimeHelper_Helper, getMin) {
 
 }
 
-PHP_METHOD(TimeHelper_Helper, getHour) {
+PHP_METHOD(ZTime_Helper, getHour) {
 
 	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *sec_param = NULL, _0, min, _1, _3, _2$$3;
@@ -217,7 +217,7 @@ PHP_METHOD(TimeHelper_Helper, getHour) {
 
 }
 
-PHP_METHOD(TimeHelper_Helper, getDay) {
+PHP_METHOD(ZTime_Helper, getDay) {
 
 	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *sec_param = NULL, _0, _1;
@@ -246,7 +246,7 @@ PHP_METHOD(TimeHelper_Helper, getDay) {
 
 }
 
-PHP_METHOD(TimeHelper_Helper, getMonth) {
+PHP_METHOD(ZTime_Helper, getMonth) {
 
 	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *sec_param = NULL, _0, _1;
@@ -275,7 +275,7 @@ PHP_METHOD(TimeHelper_Helper, getMonth) {
 
 }
 
-PHP_METHOD(TimeHelper_Helper, getYear) {
+PHP_METHOD(ZTime_Helper, getYear) {
 
 	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zval *sec_param = NULL, _0, _1;

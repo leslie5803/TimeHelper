@@ -398,6 +398,8 @@ AC_DEFUN([PHP_EVAL_LIBLINE],[
         $2="[$]$2 -pthread"
       else
         PHP_RUN_ONCE(EXTRA_LDFLAGS, [$ac_i], [EXTRA_LDFLAGS="$EXTRA_LDFLAGS $ac_i"])
+        PHP_RUN_ONCE(EXTRA_LDFLAGS_PROGRAM, [$ac_i],
+            [EXTRA_LDFLAGS_PROGRAM="$EXTRA_LDFLAGS_PROGRAM $ac_i"])
       fi
     ;;
     -l*[)]
@@ -432,7 +434,6 @@ AC_DEFUN([PHP_EVAL_INCLINE],[
 dnl internal, don't use
 AC_DEFUN([_PHP_ADD_LIBPATH_GLOBAL],[
   PHP_RUN_ONCE(LIBPATH, $1, [
-    test "x$PHP_RPATH" != "xno" &&
     test -n "$ld_runpath_switch" && LDFLAGS="$LDFLAGS $ld_runpath_switch$1"
     LDFLAGS="$LDFLAGS -L$1"
     PHP_RPATHS="$PHP_RPATHS $1"
@@ -452,7 +453,6 @@ AC_DEFUN([PHP_ADD_LIBPATH],[
     ],[
       if test "$ext_shared" = "yes"; then
         $2="-L$ai_p [$]$2"
-        test "x$PHP_RPATH" != "xno" && \
         test -n "$ld_runpath_switch" && $2="$ld_runpath_switch$ai_p [$]$2"
       else
         _PHP_ADD_LIBPATH_GLOBAL([$ai_p])
@@ -2221,7 +2221,8 @@ AC_DEFUN([PHP_SETUP_ICU],[
 
       ICU_LIBS=`$PKG_CONFIG --libs icu-uc icu-io icu-i18n`
       ICU_INCS=`$PKG_CONFIG --cflags-only-I icu-uc icu-io icu-i18n`
-      ICU_CXXFLAGS="-DU_USING_ICU_NAMESPACE=1"
+      ICU_CXXFLAGS=`$PKG_CONFIG --variable=CXXFLAGS icu-uc`
+      ICU_CXXFLAGS="$ICU_CXXFLAGS -DU_USING_ICU_NAMESPACE=1"
 
       AC_MSG_RESULT([found $ICU_VERSION])
 
@@ -2310,7 +2311,7 @@ AC_DEFUN([PHP_SETUP_KERBEROS],[
     fi
 
     for i in $PHP_KERBEROS; do
-      if test -f $i/$PHP_LIBDIR/libkrb5.$SHLIB_SUFFIX_NAME || test -f $i/$PHP_LIBDIR/$DEB_HOST_MULTIARCH/libkrb5.$SHLIB_SUFFIX_NAME || test -f $i/$PHP_LIBDIR/libkrb5.a; then
+      if test -f $i/$PHP_LIBDIR/libkrb5.a || test -f $i/$PHP_LIBDIR/libkrb5.$SHLIB_SUFFIX_NAME; then
         PHP_KERBEROS_DIR=$i
         break
       fi
@@ -2389,7 +2390,7 @@ AC_DEFUN([PHP_SETUP_OPENSSL],[
       if test -r $i/include/openssl/evp.h; then
         OPENSSL_INCDIR=$i/include
       fi
-      if test -r $i/$PHP_LIBDIR/libssl.a -o -r $i/$PHP_LIBDIR/$DEB_HOST_MULTIARCH/libssl.$SHLIB_SUFFIX_NAME -o -r $i/$PHP_LIBDIR/libssl.$SHLIB_SUFFIX_NAME; then
+      if test -r $i/$PHP_LIBDIR/libssl.a -o -r $i/$PHP_LIBDIR/libssl.$SHLIB_SUFFIX_NAME; then
         OPENSSL_LIBDIR=$i/$PHP_LIBDIR
       fi
       test -n "$OPENSSL_INCDIR" && test -n "$OPENSSL_LIBDIR" && break
@@ -2420,7 +2421,9 @@ AC_DEFUN([PHP_SETUP_OPENSSL],[
 
     PHP_ADD_INCLUDE($OPENSSL_INCDIR)
 
-    PHP_CHECK_LIBRARY(crypto, CRYPTO_free, [:],[
+    PHP_CHECK_LIBRARY(crypto, CRYPTO_free, [
+      PHP_ADD_LIBRARY(crypto,,$1)
+    ],[
       AC_MSG_ERROR([libcrypto not found!])
     ],[
       -L$OPENSSL_LIBDIR

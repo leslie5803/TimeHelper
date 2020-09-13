@@ -1,17 +1,17 @@
-PHP_ARG_ENABLE(timehelper, whether to enable timehelper, [ --enable-timehelper   Enable Timehelper])
+PHP_ARG_ENABLE(ztime, whether to enable ztime, [ --enable-ztime   Enable Ztime])
 
-if test "$PHP_TIMEHELPER" = "yes"; then
+if test "$PHP_ZTIME" = "yes"; then
 
 	
 
 	if ! test "x" = "x"; then
-		PHP_EVAL_LIBLINE(, TIMEHELPER_SHARED_LIBADD)
+		PHP_EVAL_LIBLINE(, ZTIME_SHARED_LIBADD)
 	fi
 
-	AC_DEFINE(HAVE_TIMEHELPER, 1, [Whether you have Timehelper])
-	timehelper_sources="timehelper.c kernel/main.c kernel/memory.c kernel/exception.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/math.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c timehelper/helper.zep.c "
-	PHP_NEW_EXTENSION(timehelper, $timehelper_sources, $ext_shared,, )
-	PHP_SUBST(TIMEHELPER_SHARED_LIBADD)
+	AC_DEFINE(HAVE_ZTIME, 1, [Whether you have Ztime])
+	ztime_sources="ztime.c kernel/main.c kernel/memory.c kernel/exception.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/math.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c ztime/helper.zep.c "
+	PHP_NEW_EXTENSION(ztime, $ztime_sources, $ext_shared,, )
+	PHP_SUBST(ZTIME_SHARED_LIBADD)
 
 	old_CPPFLAGS=$CPPFLAGS
 	CPPFLAGS="$CPPFLAGS $INCLUDES"
@@ -22,7 +22,7 @@ if test "$PHP_TIMEHELPER" = "yes"; then
 			AC_CHECK_HEADERS(
 				[ext/pcre/php_pcre.h],
 				[
-					PHP_ADD_EXTENSION_DEP([timehelper], [pcre])
+					PHP_ADD_EXTENSION_DEP([ztime], [pcre])
 					AC_DEFINE([ZEPHIR_USE_PHP_PCRE], [1], [Whether PHP pcre extension is present at compile time])
 				],
 				,
@@ -39,7 +39,7 @@ if test "$PHP_TIMEHELPER" = "yes"; then
 			AC_CHECK_HEADERS(
 				[ext/json/php_json.h],
 				[
-					PHP_ADD_EXTENSION_DEP([timehelper], [json])
+					PHP_ADD_EXTENSION_DEP([ztime], [json])
 					AC_DEFINE([ZEPHIR_USE_PHP_JSON], [1], [Whether PHP json extension is present at compile time])
 				],
 				,
@@ -52,6 +52,6 @@ if test "$PHP_TIMEHELPER" = "yes"; then
 
 	CPPFLAGS=$old_CPPFLAGS
 
-	PHP_INSTALL_HEADERS([ext/timehelper], [php_TIMEHELPER.h])
+	PHP_INSTALL_HEADERS([ext/ztime], [php_ZTIME.h])
 
 fi

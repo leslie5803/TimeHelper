@@ -56,8 +56,8 @@
         "indent": "spaces",
         "export-classes": false
     },
-    "namespace": "timehelper",
-    "name": "timehelper",
+    "namespace": "ztime",
+    "name": "ztime",
     "description": "",
     "author": "Zephir Team",
     "version": "0.0.1",

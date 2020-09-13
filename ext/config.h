@@ -1,17 +1,17 @@
 /* config.h.  Generated from config.h.in by configure.  */
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
-/* Whether to build timehelper as dynamic module */
-#define COMPILE_DL_TIMEHELPER 1
+/* Whether to build ztime as dynamic module */
+#define COMPILE_DL_ZTIME 1
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #define HAVE_DLFCN_H 1
 
 /* Define to 1 if you have the <ext/json/php_json.h> header file. */
-/* #undef HAVE_EXT_JSON_PHP_JSON_H */
+#define HAVE_EXT_JSON_PHP_JSON_H 1
 
 /* Define to 1 if you have the <ext/pcre/php_pcre.h> header file. */
-/* #undef HAVE_EXT_PCRE_PHP_PCRE_H */
+#define HAVE_EXT_PCRE_PHP_PCRE_H 1
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #define HAVE_INTTYPES_H 1
@@ -37,14 +37,11 @@
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
 
-/* Whether you have Timehelper */
-#define HAVE_TIMEHELPER 1
-
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
 
-/* Define to the sub-directory where libtool stores uninstalled libraries. */
-#define LT_OBJDIR ".libs/"
+/* Whether you have Ztime */
+#define HAVE_ZTIME 1
 
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 /* #undef NO_MINUS_C_MINUS_O */
@@ -71,7 +68,7 @@
 #define STDC_HEADERS 1
 
 /* Whether PHP json extension is present at compile time */
-/* #undef ZEPHIR_USE_PHP_JSON */
+#define ZEPHIR_USE_PHP_JSON 1
 
 /* Whether PHP pcre extension is present at compile time */
-/* #undef ZEPHIR_USE_PHP_PCRE */
+#define ZEPHIR_USE_PHP_PCRE 1
